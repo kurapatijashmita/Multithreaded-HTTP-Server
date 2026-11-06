@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Multithreaded HTTP Server</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 700px;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1a56db;
+            margin-top: 0;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .endpoints {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: #eef2ff;
+            border-left: 4px solid #1a56db;
+            border-radius: 4px;
+        }
+        .endpoints a {
+            color: #1a56db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .endpoints a:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f8fafc;
+        }
+        code {
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+        footer {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: #666;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>C++ Multithreaded HTTP/1.1 Server</h1>
+        <p>Welcome! This is an educational HTTP/1.1 Server built with C++17 and Windows Sockets (Winsock2).</p>
+
+        <div class="endpoints">
+            <strong>Quick Links:</strong><br>
+            &bull; <a href="/health" target="_blank">GET /health</a> - Check server health (JSON)<br>
+            &bull; <a href="/status" target="_blank">GET /status</a> - View server uptime and request metrics (JSON)
+        </div>
+
+        <h3>Supported Routes & Status Codes</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Path</th>
+                    <th>Status</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>GET</code></td>
+                    <td><code>/</code></td>
+                    <td>200 OK</td>
+                    <td>Serves this homepage (HTML)</td>
+                </tr>
+                <tr>
+                    <td><code>GET</code></td>
+                    <td><code>/health</code></td>
+                    <td>200 OK</td>
+                    <td>Returns health status (JSON)</td>
+                </tr>
+                <tr>
+                    <td><code>GET</code></td>
+                    <td><code>/status</code></td>
+                    <td>200 OK</td>
+                    <td>Returns server metrics (JSON)</td>
+                </tr>
+                <tr>
+                    <td><code>GET</code></td>
+                    <td><code>/other</code></td>
+                    <td>404 Not Found</td>
+                    <td>Unknown route</td>
+                </tr>
+                <tr>
+                    <td><code>POST</code></td>
+                    <td>Any</td>
+                    <td>405 Method Not Allowed</td>
+                    <td>Only GET is supported</td>
+                </tr>
+                <tr>
+                    <td>Invalid</td>
+                    <td>Any</td>
+                    <td>400 Bad Request</td>
+                    <td>Malformed HTTP request line</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <footer>
+            Educational project &bull; Built with C++17 and Winsock2
+        </footer>
+    </div>
+</body>
+</html>
